@@ -4,10 +4,13 @@ function Slider(){
 	this.sliderCount=this.listSlider.getElementsByTagName("li").length;
 	this.counter=0;
 	this.autoCount=0;
-	that=this;
+	this.descPos=-1020;
+	var that=this;
 	this.marginCounter=0;
 	this.speedCount=0;
-	
+	this.desc;
+	this.descAnimInterval;
+	this.textPos=1020;	
 
 	this.init=function (){
 	that.putButtons();
@@ -15,10 +18,28 @@ function Slider(){
 	// that.autoAnimation();		
 	}
 	this.putDescription=function(){
-		var desc=document.createElement("span");
-		desc.className="desc-bg";
-		that.slider.appendChild(desc);
-		console.log(that.slider);
+		that.desc=document.createElement("span");
+		that.desc.className="desc-bg";
+		that.desc.style.width="1010px";
+		that.desc.style.left=that.descPos+"px";
+		that.slider.appendChild(that.desc);
+		that.descAnimInterval=setInterval(that.animateDescription, 100);
+		that.textDesc();
+	}
+	this.animateDescription=function(){
+		that.descPos+=101;
+		that.desc.style.left=that.descPos+"px";
+		if(that.descPos>=-101){
+			clearInterval(that.descAnimInterval)
+		}
+	}
+	this.textDesc=function(){
+		that.descText=document.createElement("p");
+		that.descText.style.right="0px";
+		that.descText.innerHTML="hello";
+		that.desc.appendChild(that.descText)
+		// that.desc.innerHTML=(that.listSlider.getElementsByTagName("li")[0].getElementsByTagName("img")[0].getAttribute("title"));
+		// that.desc.innerHTML.style.left="910px";
 	}
 	this.putButtons=function(){
 		this.left=document.createElement("img");
@@ -36,6 +57,8 @@ function Slider(){
 		if(that.counter>0){
 			that.speedCount=that.marginCounter;
 			// console.log(that.speedCount);
+			that.descPos=-1020;
+			that.descAnimInterval=setInterval(that.animateDescription, 100);
 			that.marginCounter+=1010;
 			that.counter--;
 			setInterval(that.slideAnimation, 200);
@@ -49,6 +72,8 @@ function Slider(){
 			that.speedCount=that.marginCounter;
 			// console.log(that.speedCount);
 			that.marginCounter-=1010;
+			that.descPos=-1020;
+			that.descAnimInterval=setInterval(that.animateDescription, 100);
 			that.counter++;
 			slideInterval=setInterval(that.slideAnimation, 200);
 			// clearInterval(autoInterval);
