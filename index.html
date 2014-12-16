@@ -8,84 +8,148 @@
 </head>
 <body>
 	<div class="site-container">
-		<div class="header-wrapper">
-			<img src="images/logo.png" class="logo">
-			<div class="menu-search-container">
-				<div class="menu">
-					<ul>
-						<li><a href="#" class="active">Home</a></li>
-						<li><a href="">Our products</a></li>
-						<li><a href="">Our Clients</a>
-							<ul>
+		<div class="header-container">
+			<div class="logo">
+				<img src="images/logo.png" alt="logo">
+			</div>
+			<!-- menu starts -->
+			<div class="menu">
+				<ul>
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="">Our products</a></li>
+					<li><a href="">Our Clients</a>
+						<ul>
 							<li><a href="#">Decore</a></li>
 							<li><a href="">Omega</a></li>
 							<li><a href="">Kalanga</a>
-							</ul>
-						</li>
-						<li><a href="">Contact</a></li>
-					</ul>
-				</div>
-				<!-- <div class="search-container">
-					<form>
-						<input class="search-box" name="Search" type="text" placeholder="Search">
-                        <input class="search-icon" name="" type="button">
-					</form>
-				</div> -->
-			</div>
-			<!-- slider starts here -->
-			<!-- <div class="slider-wrapper">
-				<div class="slider-container">
-					<ul>
-
-						<li><img src="images/slider-image.jpg" title="Starting 200$"></li>
-						<li><img src="images/slider-image.jpg"title="Starting 200$"></li>
-						<li><img src="images/slider-image.jpg"title="Starting 200$"></li>
-						<li><img src="images/slider-image.jpg"title="Starting 200$"></li>
-						<li><img src="images/slider-image.jpg"title="Starting 200$"></li>
-					</ul>
-				</div>
-			</div> -->
-		</div>
-		<div class="body-container">
-				<div class="company-profile">
-					<div class="company-info">
-						<span>WOMEN'S SUNGLASSES</span>
-						<P>With sunglasses and fits designed exclusively for women, fashion meets function through the lens of High Defination Optics&reg; From the tries and true to everything new, we've created an entiely new dimension with Oakley Women's Sunglasses</p>
-						<a href="#"> SHOP ALL WOMEN'S SUNGLASSES</a>
-					</div>
-					<div class="shopping-guide">
-						<img src="images/shopping-guide.jpg">
-					</div>
-				</div>
-				<div class="tab-group"></div>
-			</div>
-			<div class="footer-container">
-				<div class="footer-upper clearfix">
-				<p>If you want the best clarity and protection on the planet, nothing comes close to Oakley's High Defination Optics&reg; (HDO&reg;). Its patented technologies surpass all tests of the American National Standards Institute.</p>
-				<hr>
-				<ul>
-					<li>
-						<span><img src="images/icon-polarized.png"></span>
-						<h1>HD POLARIZED</h1>
-						<p>Oakley used a liquid infusion process that creates bording at the molecular ;evel, allowing the filter to achieve the highest possible level of performance.</p>
+						</ul>
 					</li>
-					<li>
-						<span><img src="images/icon-hydrophobic.png"></span>
-						<h1>HYDROPHOBIC</h1>
-						<p>A permanent lens coating that prevents rain and swat from building up on the lens. Iti also repels skin oils, so the lens is smudge resistant and easy to keep clean.</p>
-					</li>
-					<li>
-						<span><img src="images/icon-prescription.png"></span>
-						<h1>PRESCRIPTION</h1>
-						<p>From the office to any playing surface, Oakley prescription eyewear can put things in focus for eerywhere in between. Sunglasses, too.</p>
-					</li>
-					<li>
-						<span><img src="images/icon-photochromic.png"></span>
-						<h1>PHOTOCHROMIC</h1>
-						<p>Light conditions change constantly and if yor eyes can't keep up, your performance will suffer. Maintain peak performace while being shielded from 100% of all harmfu; UV rays.</p>
-					</li>
+					<li><a href="">Contact</a></li>
 				</ul>
+			</div>
+			<!-- search container starts -->
+			<div class="search-container">
+				<span><input type="text" placeholder="Search" id="search-input"/></span>
+		    	<input type="submit" value=""/>
+		    </div>
+		</div>
+		<!-- slider starts -->
+		<div class="slider-container">
+			<div class="slider-wrapper">
+				<ul>
+					<li><img src="images/slider-image.jpg" alt="slider-1" title="Starting 200$"></li>
+					<li><img src="images/slider-image.jpg" alt="slider-2" title="Starting 200$"></li>
+					<li><img src="images/slider-image.jpg" alt="slider-3" title="Starting 200$"></li>
+					<li><img src="images/slider-image.jpg" alt="slider-4" title="Starting 200$"></li>
+					<li><img src="images/slider-image.jpg" alt="slider-5" title="Starting 200$"></li>
+				</ul>
+			</div>
+		</div>
+		<!-- Body content starts -->
+		<div class="body-container">
+			<div class="body-left">
+				<div class="category-excerpt">
+					<span class="title">WOMEN'S SUNGLASSES</span>
+					<p>With sunglasses and fits designed exclusively for women, fashion meets function through the lens of High Defination Optics&reg; From the tries and true to everything new, we've created an entiely new dimension with Oakley Women's Sunglasses</p>
+					<a href="#"><span>SHOP ALL WOMEN'S SUNGLASSES</span></a>
 				</div>
+			</div>
+			<div class="body-right">
+				<div class="shopping-guide">
+					<img src="images/shopping-guide.jpg" alt="shopping guide">
+				</div>
+			</div>
+			<div class="tabs">
+				<ul>
+               		<li class="active"><a href="#">tab 1</a>
+                    	<ul>
+                       		<li>
+                           		<img src="images/glass1.jpg" alt="glass1">
+                                <h2>sport</h2>
+                                <p>With Okaley, athletes like Karena Dawn continue to make their mark on the world. And we're making our mark on them.</p>
+                            </li>
+                            <li>
+                            	<img src="images/glass2.jpg" alt="glass2">
+                                <h2>active</h2>
+                                <p>The Sunglasses in the Oakley Women's Active Sunglasses collection are for women who take fintness seroiusly but spend even more time in pursuit of fun.</p>
+                            </li>
+                            <li>
+                           		<img src="images/glass3.jpg" alt="glass3">
+                                <h2>lifestyle</h2>
+                                <p>Living by their own rules in what makes women unique, and there's something for every woman in our Oakley Womens's Lifestyle Sunglass Collection.</p>
+                            </li> 
+                        </ul>
+                    </li>
+                    <li><a href="#">tab 2</a>
+                   		<ul>
+                       		<li>
+                           		<img src="images/glass1.jpg" alt="glass1">
+                                <h2>sport</h2>
+                                <p>With Okaley, athletes like Karena Dawn continue to make their mark on the world. And we're making our mark on them.</p>
+                            </li>
+                            <li>
+                            	<img src="images/glass2.jpg" alt="glass2">
+                                <h2>active</h2>
+                                <p>The Sunglasses in the Oakley Women's Active Sunglasses collection are for women who take fintness seroiusly but spend even more time in pursuit of fun.</p>
+                            </li>
+                            <li>
+                           		<img src="images/glass3.jpg" alt="glass3">
+                                <h2>lifestyle</h2>
+                                <p>Living by their own rules in what makes women unique, and there's something for every woman in our Oakley Womens's Lifestyle Sunglass Collection.</p>
+                            </li> 
+                        </ul> 
+                    </li>
+                    <li><a href="#">tab 2</a>
+                    	<ul>
+                       		<li>
+                           		<img src="images/glass1.jpg" alt="glass1">
+                                <h2>sport</h2>
+                                <p>With Okaley, athletes like Karena Dawn continue to make their mark on the world. And we're making our mark on them.</p>
+                            </li>
+                            <li>
+                            	<img src="images/glass2.jpg" alt="glass2">
+                                <h2>active</h2>
+                                <p>The Sunglasses in the Oakley Women's Active Sunglasses collection are for women who take fintness seroiusly but spend even more time in pursuit of fun.</p>
+                            </li>
+                            <li>
+                           		<img src="images/glass3.jpg" alt="glass3">
+                                <h2>lifestyle</h2>
+                                <p>Living by their own rules in what makes women unique, and there's something for every woman in our Oakley Womens's Lifestyle Sunglass Collection.</p>
+                            </li> 
+                        </ul> 
+                    </li> 
+                </ul>
+			</div><!-- tabs end here -->			
+		</div><!-- body container end -->
+		<!-- footer starts here -->
+		<div class="footer-container">
+			<div class="footer-upper clearfix">
+					<p>If you want the best clarity and protection on the planet, nothing comes close to Oakley's High Defination Optics&reg; (HDO&reg;). Its patented technologies surpass all tests of the American National Standards Institute.</p>
+					<hr>
+					<ul>
+						<li>
+							<span><img src="images/icon-polarized.png"></span>
+							<h1>HD POLARIZED</h1>
+							<p>Oakley used a liquid infusion process that creates bording at the molecular ;evel, allowing the filter to achieve the highest possible level of performance.</p>
+						</li>
+						<li>
+							<span><img src="images/icon-hydrophobic.png"></span>
+							<h1>HYDROPHOBIC</h1>
+							<p>A permanent lens coating that prevents rain and swat from building up on the lens. Iti also repels skin oils, so the lens is smudge resistant and easy to keep clean.</p>
+						</li>
+						<li>
+							<span><img src="images/icon-prescription.png"></span>
+							<h1>PRESCRIPTION</h1>
+							<p>From the office to any playing surface, Oakley prescription eyewear can put things in focus for eerywhere in between. Sunglasses, too.</p>
+						</li>
+						<li>
+							<span><img src="images/icon-photochromic.png"></span>
+							<h1>PHOTOCHROMIC</h1>
+							<p>Light conditions change constantly and if yor eyes can't keep up, your performance will suffer. Maintain peak performace while being shielded from 100% of all harmfu; UV rays.</p>
+						</li>
+					</ul>
+			</div>
+				<!-- mid footer -->
 				<div class="footer-mid">
 					<ul>
 						<li><a href="#"><img src="images/footer-home.png"></a><span class="seperator"></span></li>
@@ -94,13 +158,10 @@
 						<li><a href="#">Women's Sunglasses</a></li>
 					</ul>
 				</div>
+				<!-- lower footer -->
 				<div class="footer-lower">
 					<div class="countries">
-						<ul>
-							<li><a href="#">USA</a></li>
-							<li><a href="">Nepal</a></li>
-							<li><a href="">India</a></li>
-						</ul>
+						
 					</div>
 					<div class="links">
 						<ul>
@@ -117,11 +178,12 @@
 							<li><a href="#">Careers</a></li>
 						</ul>
 					</div>
+					<!-- copyright -->
 					<div class="copyright">Copyright &copy;2014 Oakley, Inc. All rights Reserved.</div>
 				</div>
-				
-			</div>
-	</div>
-<!-- <script type="text/javascript" src="js/slider1.js"></script> -->
+		</div><!-- footer container ends here -->
+	</div><!-- site container end -->
+<script type="text/javascript" src="js/slider.js"></script>
+<script type="text/javascript" src="js/tab.js"></script>
 </body>
 </html>

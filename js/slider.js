@@ -1,47 +1,138 @@
-function Slider(){
-	this.listSlider=document.getElementsByTagName("ul")[0];
-	this.slider=document.getElementsByClassName("slider-container")[0];
-	this.sliderCount=this.listSlider.getElementsByTagName("li").length;
-	this.counter=0;
-	this.autoCount=0;
-	this.descPos=-1020;
+function Animator(slide){
+	var frequency=50;
+	var counter=0;
+	var currentLeftMargin=0;
+	this.element;
+	this.properties;
+	this.duration;
+	this.callback;
+	this.leftMargin;
+	this.sliderCount;
+	var index=0;
 	var that=this;
-	this.marginCounter=0;
-	this.speedCount=0;
-	this.desc;
-	this.descAnimInterval;
-	this.textPos=1020;	
+	this.animate=function (el,properties,duration,callback){
+		that.element=el;
+		that.sliderCount=that.element.getElementsByTagName("li").length;
+		that.properties=properties;
+		// that.leftMargin = that.properties.marginLeft.split("px")[0];
+		that.leftMargin = that.properties.marginLeft;
+		that.duration=duration;
+		that.callback=callback;
+			if(currentLeftMargin==0){//check for left limit
+				if(that.leftMargin!=1010){ 
+					// if it isn't asked to move left from leftmost
+					that.intervalId=setInterval(that.move, frequency);
+				}	
+			}else if(currentLeftMargin==(-1010*(that.sliderCount-1))){//check for right limit
+				if(that.leftMargin!=-1010){
+					// if it isn't asked to move right from rightmost
+					that.intervalId=setInterval(that.move, frequency);
+				}
+			}else{//animate for middle range values
+				that.intervalId=setInterval(that.move, frequency);
+			}
+	}
+	this.animateDescription=function (el,properties,duration,callback){
+		that.element=el;
+		that.properties=properties;
+		that.leftMargin = that.properties.marginLeft;
+		that.duration=duration;
+		that.callback=callback;
+		if(that.element.hasChildNodes()){
+			that.element.removeChild(that.element.getElementsByTagName("p")[0]);
+		}
+		var sliderNumber=(Math.abs(currentLeftMargin)/1010)+1;		
+		if(that.leftMargin==1010){
+			if(sliderNumber!=1){//check leftmost slider
+			currentLeftMargin=1010;
+			that.intervalId=setInterval(that.slideDesc, frequency);
+			}
+		}
+		if(that.leftMargin==-1010){
+			if(sliderNumber!=5){//check rightmost
+			currentLeftMargin=-1010;
+			that.intervalId=setInterval(that.slideDesc, frequency);
+			}
+		}
+		
+	}
+	this.animateDescText=function (el,properties,duration,callback){
+		that.element=el;
+		that.properties=properties;
+		that.leftMargin = that.properties.marginLeft;
+		that.duration=duration;
+		that.callback=callback;
+		if(that.leftMargin==1010){
+			currentLeftMargin=1332;
+			that.intervalId=setInterval(that.slideText, frequency);
+		}
+		if(that.leftMargin==-1010){
+			currentLeftMargin=-680;
+			that.intervalId=setInterval(that.slideText, frequency/10);
+		}
+		
+	}
 
-	this.init=function (){
-	that.putButtons();
-	that.putDescription();
-	// that.autoAnimation();		
+	this.move=function (){
+		counter++;
+		var val=currentLeftMargin+(that.leftMargin/(that.duration/frequency)*counter);
+		that.element.style.marginLeft=val+"px";
+		if(counter>=that.duration/frequency){
+			currentLeftMargin+=that.leftMargin;
+			clearInterval(that.intervalId);
+			counter=0;
+		}
+
 	}
-	this.putDescription=function(){
-		that.desc=document.createElement("span");
-		that.desc.className="desc-bg";
-		that.desc.style.width="1010px";
-		that.desc.style.left=that.descPos+"px";
-		that.slider.appendChild(that.desc);
-		that.descAnimInterval=setInterval(that.animateDescription, 100);
-		that.textDesc();
+	this.slideDesc=function (){
+		counter++;
+		var textMargin=currentLeftMargin;
+		var val=currentLeftMargin-(that.leftMargin/(that.duration/frequency)*counter);
+		that.element.style.marginLeft=val+"px";
+		if(counter>=that.duration/frequency){
+			currentLeftMargin+=that.leftMargin;
+			clearInterval(that.intervalId);
+			counter=0;			
+			that.element.innerHTML="<p>"+slide.listSlider.getElementsByTagName("li")[(Math.abs(currentLeftMargin)/1010)].getElementsByTagName("img")[0].getAttribute("title")+"</p>";
+			that.animateDescText(that.element.getElementsByTagName("p")[0],{marginLeft:-textMargin},2000,function(){console.log('done');});
+		}
+
 	}
-	this.animateDescription=function(){
-		that.descPos+=101;
-		that.desc.style.left=that.descPos+"px";
-		if(that.descPos>=-101){
-			clearInterval(that.descAnimInterval)
+	this.slideText=function(){
+		counter++;
+		var val=currentLeftMargin-(that.leftMargin/(that.duration/frequency)*counter);
+		that.element.style.marginLeft=val+"px";
+		if(counter>=that.duration/frequency){
+			currentLeftMargin+=that.leftMargin;
+			clearInterval(that.intervalId);
+			counter=0;
 		}
 	}
-	this.textDesc=function(){
-		that.descText=document.createElement("p");
-		that.descText.style.right="0px";
-		that.descText.innerHTML="hello";
-		that.desc.appendChild(that.descText)
-		// that.desc.innerHTML=(that.listSlider.getElementsByTagName("li")[0].getElementsByTagName("img")[0].getAttribute("title"));
-		// that.desc.innerHTML.style.left="910px";
+	this.stop=function (){
+		if(this.properties){
+			//if double clicked in the middle,margin value is reset to currently sliding
+			that.element.style.marginLeft=that.leftMargin;
+		}
+		counter=0;
+		clearInterval(that.intervalId);
+	}
+}
+function Slider(){
+	this.sliderWidth=1010;
+	this.slider=document.getElementsByClassName("slider-wrapper")[0];
+	this.listSlider=this.slider.getElementsByTagName("ul")[0];
+	this.marginCount=0;
+	this.desc;
+	var that=this;
+	// this.descPos=-1020;
+	this.init=function (){
+		sliderAnimation=new Animator();
+		descAnimation=new Animator(this);
+		that.putButtons();
+		that.autoAnimation();
 	}
 	this.putButtons=function(){
+		// puts left and right buttons in sliders and call onclick actions
 		this.left=document.createElement("img");
 		this.left.src="images/left-inactive.png";
 		this.left.id="left-inactive";
@@ -52,56 +143,33 @@ function Slider(){
 		this.right.id="right-inactive";
 		this.right.onclick=that.moveRight;
 		that.slider.appendChild(this.right);
+		that.putDescription();
 	}
+	this.putDescription=function(){
+		that.desc=document.createElement("span");
+		that.desc.className="desc-bg";
+		that.desc.style.width="1010px";
+		that.desc.style.marginLeft="0px";
+		that.slider.appendChild(that.desc);
+	}
+
 	this.moveLeft=function (){
-		if(that.counter>0){
-			that.speedCount=that.marginCounter;
-			// console.log(that.speedCount);
-			that.descPos=-1020;
-			that.descAnimInterval=setInterval(that.animateDescription, 100);
-			that.marginCounter+=1010;
-			that.counter--;
-			setInterval(that.slideAnimation, 200);
-			// clearInterval(autoInterval);
-			// autoInterval=setInterval(that.moveRight, 4000);
-		}
-		
-	}
+			clearInterval(autoInterval);
+			sliderAnimation.stop();
+			that.marginCount+=that.sliderWidth;
+			sliderAnimation.animate(that.listSlider,{marginLeft:that.sliderWidth},2000,function(){console.log('done');});		
+			descAnimation.animateDescription(that.desc,{marginLeft:1010},2000,function(){console.log('done');});
+			}
 	this.moveRight=function (){
-		if(that.counter<that.sliderCount-1){
-			that.speedCount=that.marginCounter;
-			// console.log(that.speedCount);
-			that.marginCounter-=1010;
-			that.descPos=-1020;
-			that.descAnimInterval=setInterval(that.animateDescription, 100);
-			that.counter++;
-			slideInterval=setInterval(that.slideAnimation, 200);
-			// clearInterval(autoInterval);
-			// autoInterval=setInterval(that.moveRight, 4000);
-		}
-	}
-	this.slideAnimation=function (){
-		if(that.speedCount>that.marginCounter){
-			//for right slide animation
-			that.speedCount-=202;
-			that.listSlider.style.marginLeft=that.speedCount+"px";
-		}
-		else if(that.speedCount<that.marginCounter){
-			//for left slide animation
-			that.speedCount+=202;
-			that.listSlider.style.marginLeft=that.speedCount+"px";
-			
-		}else{
-			clearInterval(slideInterval);
-		}
-		
+			clearInterval(autoInterval);
+			// autoInterval=setInterval(that.moveRight, 4000);//clears auto interval and sets it again
+			sliderAnimation.stop();
+			that.marginCount-=that.sliderWidth;
+			sliderAnimation.animate(that.listSlider,{marginLeft:-that.sliderWidth},2000,function(){console.log('done');});
+			descAnimation.animateDescription(that.desc,{marginLeft:-1010},2000,function(){console.log('done');});
 	}
 	this.autoAnimation=function (){
-		autoInterval=setInterval(that.moveRight, 4000);
-		// if(that.autoCount==that.sliderCount){
-		// 	that.marginCounter==0;
-		// }
-		//automatically slides right
+		autoInterval=setInterval(that.moveRight, 100);
 	}
 }
 var s= new Slider();

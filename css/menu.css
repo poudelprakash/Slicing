@@ -1,60 +1,80 @@
-.menu-search-container{
-	margin-left: 30px;
-	margin-top: 36px;
-}
+/*menu css*/
 .menu{
-	clear: both;
+	margin-top: 36px;
+	float:left;
 }
 .menu ul{
 	list-style: none;
-	height: 83px;
 }
 .menu ul li{
-	float: left;
-	position: relative;
+	float:left;
+	display:block;
+	font-size: 17px;
+	height:80px;
+	text-align: center;
+}
+.menu ul li:hover{
+	background: #5a93e9;
 }
 .menu ul li a{
 	text-decoration: none;
 	color: #fff;
-	font-size: 18px;
-	height:21px;
+	background:#a49191;
 	display: block;
-	padding: 19px 8px 11px 8px;
+	line-height: 50px;
+	padding: 0 16px;
+	margin:15px 0px;
 }
-.menu ul li a:hover,.menu ul li a:active{
-	background-color: #5a93e9;
-	padding: 35px 8px 27px 8px;
-	margin: 0;
+.menu ul li:hover a{
+	background: #5a93e9;
+}
+.menu ul li.active{
+	background: #5a93e9;
+}
+.menu ul li.active a {
+	background: #5a93e9;
 }
 .menu ul li ul{
-	width:186px;
-	height: 38px;
-	min-height: 38px;
-	height: auto !important;
-	padding:7px 0 3px 0;
-	position: absolute;
-	top: 76px;
-	display: none;
-	background-color:#594e4e;
-}
-.menu ul li:hover ul{
-	display: block;
+	display:none;
+	position:absolute;
+	background:#594e4e;
+	margin:-6px 0px 0px 0px;
+	z-index:10;
+	padding:2px 0px 4px 0px;
 }
 .menu ul li ul li{
-	width: 186px;
-	margin-bottom: 2px;
-	background-color: #5a93a9;
+	float: none;
+	height: 28px;
 }
 .menu ul li ul li a{
-	background-color: #5a93e9;
+	background: #5a93e9;
 	line-height: 28px;
-	width: 166px;
-	padding: 0 10px;
-	display: block;
-	font-size: 17px;
-
+	padding: 0 0 0 10px;
+	margin:2px 0;
+	min-width:176px;
+	text-align:left;
+	display:block;
+	text-decoration:none;
+	color:white;
 }
-.menu ul li ul li a:hover{
-	padding: 0 10px;
-	background-color:#5a93e9;
+.menu ul li:hover ul{
+	display:block;
+}
+
+.menu ul li:hover ul li{
+	background: none;
+	margin:0;
+	padding:0;
+	line-height: 28px;
+}
+.menu ul li:hover ul li a{
+	background: #5a93e9;
+	margin:0;
+	padding:0;
+	line-height: 28px;
+}
+.menu ul li:hover ul li a{
+	line-height: 28px;
+	padding: 0 0 0 10px;
+	margin:2px 0;
 }
