@@ -1,5 +1,3 @@
-// JavaScript Document
-
 var zoombtn=document.getElementById("zoombtn");
 var lightbox=new Lightbox();
 zoombtn.onclick=function(){
@@ -11,11 +9,11 @@ zoombtn.onclick=function(){
 
 function Lightbox(){
 	var that=this;
-	this.parent=document.getElementsByClassName("body-left")[0];
+	this.parent=document.getElementsByClassName("body-container")[0];
 	this.closebtn;
 	this.element;
 	this.image;
-
+	this.parent.style.position = 'relative';
 	this.init=function(){
 	that.element=document.createElement("div");
 	that.element.className="lightbox";

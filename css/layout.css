@@ -11,7 +11,6 @@
     padding: 31px 30px 0px 30px;
     height: 203px;
 }
-
 .logo {
     width: 221px;
     height: 87px;
@@ -240,6 +239,7 @@
 }
 /*footer code starts here*/
 .footer-container{
+    clear: both;
     margin-top: 30px;
 }
 .footer-upper{
@@ -311,6 +311,7 @@
 }
 .footer-lower .countries{
     /*margin-left: 40px;*/
+    float: left
 }
 .footer-lower .countries ul{
     list-style: none;
@@ -345,4 +346,82 @@
 .footer-container .copyright{
     clear:both;
     float: right;
+}
+/*detail page layout*/
+.product-detail{
+    font-family:Verdana, Geneva, sans-serif;
+    float: left;
+    position: relative;
+    min-height: 650px;
+}
+.product-detail h1{
+    font-weight: normal;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.product-detail p{
+    color: #7f7f7f;
+    line-height: 16px;
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+.body-right span a img{
+    margin-left: 75px;
+    padding-top: 50px;
+}
+.body-right .buy-btn{
+    background:url("images/right-buy.png");
+}
+.body-right button{
+    background-color: #636363;
+    height: 34px;
+    width: 110px;
+    border:0px;
+}
+/*buy button*/
+.item-price{
+   margin-left: 75px;
+   padding-top: 90px;
+}
+.item-price a span {
+    text-align: center;
+    display: block;
+    background: url(../images/left-border-buy-button.png) 0 0 no-repeat;
+    padding: 0 10px;
+}
+
+.item-price a {
+    margin-top: 18px;
+    width: 90px;
+    line-height: 34px;
+    color: #ffffff;
+    text-decoration: none;
+    background: url(../images/right-border-buy-button.png) 100% 0 no-repeat;
+    background-color: #636363;
+    display: block;
+}
+/*lightbox*/
+.lightbox {
+    width: 1008px;
+    height: 470px;
+    position: absolute;
+    top: 14px;
+    left: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+    background:url(../images/lightbox-bg.png);
+    padding: 35px 30px 35px 30px;
+}
+.closebtn {
+    width: 23px;
+    height: 26px;
+    position: absolute;
+    right: 22px;
+    top: 8px;
+    background-image:url(../images/closebtn.png);
+}
+.lightbox img {
+    width: 1009px;
+    height: 470px;
 }
