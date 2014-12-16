@@ -1,0 +1,60 @@
+.menu-search-container{
+	margin-left: 30px;
+	margin-top: 36px;
+}
+.menu{
+	clear: both;
+}
+.menu ul{
+	list-style: none;
+	height: 83px;
+}
+.menu ul li{
+	float: left;
+	position: relative;
+}
+.menu ul li a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 18px;
+	height:21px;
+	display: block;
+	padding: 19px 8px 11px 8px;
+}
+.menu ul li a:hover,.menu ul li a:active{
+	background-color: #5a93e9;
+	padding: 35px 8px 27px 8px;
+	margin: 0;
+}
+.menu ul li ul{
+	width:186px;
+	height: 38px;
+	min-height: 38px;
+	height: auto !important;
+	padding:7px 0 3px 0;
+	position: absolute;
+	top: 76px;
+	display: none;
+	background-color:#594e4e;
+}
+.menu ul li:hover ul{
+	display: block;
+}
+.menu ul li ul li{
+	width: 186px;
+	margin-bottom: 2px;
+	background-color: #5a93a9;
+}
+.menu ul li ul li a{
+	background-color: #5a93e9;
+	line-height: 28px;
+	width: 166px;
+	padding: 0 10px;
+	display: block;
+	font-size: 17px;
+
+}
+.menu ul li ul li a:hover{
+	padding: 0 10px;
+	background-color:#5a93e9;
+}
