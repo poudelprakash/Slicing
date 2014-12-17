@@ -21,12 +21,18 @@ function Animator(slide){
 			if(currentLeftMargin==0){//check for left limit
 				if(that.leftMargin!=1010){ 
 					// if it isn't asked to move left from leftmost
+					slide.left.src="images/left-active.png";
 					that.intervalId=setInterval(that.move, frequency);
-				}	
+				}else{
+					slide.left.src="images/left-inactive.png";
+				}
 			}else if(currentLeftMargin==(-1010*(that.sliderCount-1))){//check for right limit
 				if(that.leftMargin!=-1010){
 					// if it isn't asked to move right from rightmost
+					slide.left.src="images/right-active.png";
 					that.intervalId=setInterval(that.move, frequency);
+				}else{
+					slide.right.src="images/right-inactive.png";
 				}
 			}else{//animate for middle range values
 				that.intervalId=setInterval(that.move, frequency);
@@ -64,7 +70,7 @@ function Animator(slide){
 		that.callback=callback;
 		if(that.leftMargin==1010){
 			currentLeftMargin=1332;
-			that.intervalId=setInterval(that.slideText, frequency);
+			that.intervalId=setInterval(that.slideText, frequency/5);
 		}
 		if(that.leftMargin==-1010){
 			currentLeftMargin=-680;
@@ -126,7 +132,7 @@ function Slider(){
 	var that=this;
 	// this.descPos=-1020;
 	this.init=function (){
-		sliderAnimation=new Animator();
+		sliderAnimation=new Animator(this);
 		descAnimation=new Animator(this);
 		that.putButtons();
 		that.autoAnimation();
@@ -139,7 +145,7 @@ function Slider(){
 		this.left.onclick=that.moveLeft;
 		that.slider.appendChild(this.left);
 		this.right=document.createElement("img");
-		this.right.src="images/right-inactive.png";
+		this.right.src="images/right-active.png";
 		this.right.id="right-inactive";
 		this.right.onclick=that.moveRight;
 		that.slider.appendChild(this.right);
@@ -162,7 +168,7 @@ function Slider(){
 			}
 	this.moveRight=function (){
 			clearInterval(autoInterval);
-			// autoInterval=setInterval(that.moveRight, 4000);//clears auto interval and sets it again
+			// autoInterval=setInterval(that.moveRight, 2000);//clears auto interval and sets it again
 			sliderAnimation.stop();
 			that.marginCount-=that.sliderWidth;
 			sliderAnimation.animate(that.listSlider,{marginLeft:-that.sliderWidth},2000,function(){console.log('done');});

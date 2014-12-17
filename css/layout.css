@@ -119,8 +119,9 @@
     min-height: 206px;
 }
 /*category excerps at home page*/
-.category-excerpt .title {
+.category-excerpt h1 {
     font-size: 18px;
+    font-weight: normal;
 }
 
 .category-excerpt p {
@@ -319,6 +320,9 @@
 .footer-lower .countries ul li{
     display: block;
     line-height: 20px;
+}
+.footer-lower .countries ul li img{
+    margin-right: 10px;
 }
 .footer-lower .countries ul li a{
     text-decoration: none;
